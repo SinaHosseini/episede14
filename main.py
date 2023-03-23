@@ -1,9 +1,9 @@
 import random
+import time
 import arcade
 from enemy import Enemy
 from bullet import Bullet
 from space_ship import Spaceship
-
 
 
 class Game(arcade.Window):
@@ -67,7 +67,7 @@ class Game(arcade.Window):
         for enemy in self.enemies:
             enemy.move()
 
-        if random.randint(1, 80) == 6:
+        while time.sleep(3):
             self.enemy = Enemy(self)
             self.enemies.append(self.enemy)
 
