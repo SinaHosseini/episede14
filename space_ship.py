@@ -1,6 +1,7 @@
 import arcade
 from bullet import Bullet
 
+
 class Spaceship(arcade.Sprite):
     def __init__(self, w):
         super().__init__(":resources:images/space_shooter/playerShip1_blue.png")
@@ -10,7 +11,7 @@ class Spaceship(arcade.Sprite):
         self.change_y = 0
         self.width = 60
         self.height = 60
-        self.speed = 5
+        self.speed = 6
         self.game_width = w
         self.bullets = []
 
