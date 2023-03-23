@@ -1,9 +1,12 @@
 import random
+import threading
 import time
 import arcade
 from enemy import Enemy
 from bullet import Bullet
 from space_ship import Spaceship
+
+strat = time.time()
 
 
 class Game(arcade.Window):
@@ -43,6 +46,13 @@ class Game(arcade.Window):
     def on_key_release(self, symbol, modifiers: int):
         self.space_ship.change_x = 0
 
+
+    def make_enemy(self):
+        time.sleep(3)
+        self.enemy = Enemy(self)
+        self.enemies.append(self.enemy)
+
+
     def on_update(self, delta_time):
         for enemy in self.enemies:
             if arcade.check_for_collision(self.space_ship, enemy):
@@ -67,9 +77,10 @@ class Game(arcade.Window):
         for enemy in self.enemies:
             enemy.move()
 
-        while time.sleep(3):
-            self.enemy = Enemy(self)
-            self.enemies.append(self.enemy)
+        new_enemy = Game()
+        new_enemy.make_enemy()
+
+
 
 
 window = Game()
